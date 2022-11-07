@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProEventos.API.Data;
 using ProEventos.API.Model;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProEventos.API.Controllers
 {
@@ -11,24 +14,23 @@ namespace ProEventos.API.Controllers
     public class EventoController : ControllerBase
     {
 
-        public EventoController()
-        {
+        private readonly DataContext _context;
 
+        public EventoController(DataContext context)
+        {
+            _context = context;
         }
 
         [HttpGet]
-        public Evento Get()
+        public IEnumerable<Evento> Get()
         {
-            return new Evento(){
-                EventoId = 1,
-                Tema= "Angular 11 e .NET",
-                Local = "1º lote",
-                QtPessoas = 250,
-                DataEvento = DateTime.Now.AddDays(2).ToString(),
-                Lote = "1º lote",
-                ImgEvento = "Foto.png"
+            return _context.Eventos;
+        }
 
-            };
+        [HttpGet("{id}")]
+        public IEnumerable<Evento> GetById(int id)
+        {
+            return _context.Eventos.Where(x=> x.EventoId.Equals(id));
         }
 
     }
