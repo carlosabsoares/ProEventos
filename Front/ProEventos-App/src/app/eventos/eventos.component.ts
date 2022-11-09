@@ -17,8 +17,8 @@ export class EventosComponent implements OnInit {
   }
 
   public getEventos(): void{
-    this.http.get('https://localhost:44306/api/Eventos').subscribe(
-      response => this.eventos = response,
+    this.http.get('https://localhost:5001/api/Eventos').subscribe(
+    response => this.eventos = response,
       error=> console.log(error)
 
     );
