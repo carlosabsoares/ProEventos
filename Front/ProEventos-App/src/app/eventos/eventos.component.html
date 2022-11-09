@@ -21,8 +21,8 @@
       <th>Opções</th>
     </tr>
   </thead>
-  <tbody *ngFor="let evento of eventos">
-    <tr>
+  <tbody>
+    <tr *ngFor="let evento of eventos">
       <td>{{evento.eventoId}}</td>
       <td>{{evento.imgEvento}}</td>
       <td>{{evento.tema}}</td>
