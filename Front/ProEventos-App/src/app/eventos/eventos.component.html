@@ -1,21 +1,27 @@
 <h2>Eventos</h2>
 <hr>
 
-<form action="" class="form-inline">
+<div action="" class="form-inline">
   <div class="form-group mb-2">
-    <input type="text" class="form-control mr-2" placeholder="buscar">
+    <input
+      type="text"
+      class="form-control mr-2"
+      placeholder="buscar"
+      [(ngModel)]="listFilter">
     <button class="btn btn-outline-success">Buscar</button>
   </div>
-</form>
+</div>
+
+<h3>Filtro: {{listFilter}}</h3>
 
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
-      <th>#</th>
       <th>
         <button type="button" class="btn btn-outline-light btm-sm"
-        (click) = "alterImage()">Mostrar</button>
+        (click) = "alterImage()">{{!showImage? 'Exibir': 'Ocultar'}}</button>
       </th>
+      <th>#</th>
       <th>Tema</th>
       <th>Local</th>
       <th>Data</th>
@@ -25,15 +31,15 @@
     </tr>
   </thead>
   <tbody *ngIf="eventos && eventos.length">
-    <tr *ngFor="let evento of eventos">
-      <td>{{evento.eventoId}}</td>
+    <tr *ngFor="let evento of eventosFiltred">
       <td>
-        <img *ngIf="showImage" src="/assets/{{evento.imgEvento}}"
+        <img [collapse]="showImage"
+             [isAnimated]="true"
+             src="/assets/{{evento.imgEvento}}"
         [style.width.px]="widthImg"
-        [style.margin.px]="marginImg"
-        >
-
+        [style.margin.px]="marginImg">
       </td>
+      <td>{{evento.eventoId}}</td>
       <td>{{evento.tema}}</td>
       <td>{{evento.local}}</td>
       <td>{{evento.dataEvento}}</td>
