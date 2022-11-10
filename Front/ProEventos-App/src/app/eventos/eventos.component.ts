@@ -18,7 +18,8 @@ export class EventosComponent implements OnInit {
   findEventos(findFor: string): any{
     findFor = findFor.toLocaleLowerCase();
     return this.eventos.filter(
-      (evento: any) => evento.tema.toLocaleLowerCase().indexOf(findFor) !== -1
+      (evento: any) => evento.tema.toLocaleLowerCase().indexOf(findFor) !== -1 ||
+                       evento.local.toLocaleLowerCase().indexOf(findFor) !== -1
     )
   };
 
