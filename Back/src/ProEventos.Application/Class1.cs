@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProEventos.Application
+﻿namespace ProEventos.Application
 {
     public class Class1
     {
