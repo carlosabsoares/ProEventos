@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace ProEventos.Persistence.Repositories
 {
-    public class ProEventosRepositoryPalestrante : ProEventosRepository, IProEventosRepositoryPalestrante
+    public class ProEventosRepositoryPalestrante : IProEventosRepositoryPalestrante
     {
         private readonly ProEventosContext _context;
 
-        public ProEventosRepositoryPalestrante(ProEventosContext context) : base(context)
+        public ProEventosRepositoryPalestrante(ProEventosContext context) 
         {
             _context = context;
         }
@@ -34,7 +34,7 @@ namespace ProEventos.Persistence.Repositories
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos)
+        public async Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos = false)
         {
             IQueryable<Palestrante> query = _context.Palestrantes
                                                .Include(p => p.RedesSociais);
@@ -48,7 +48,7 @@ namespace ProEventos.Persistence.Repositories
             return await query.ToArrayAsync();
         }
 
-        public async Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos)
+        public async Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos = false)
         {
             IQueryable<Palestrante> query = _context.Palestrantes
                                                .Include(p => p.RedesSociais);
