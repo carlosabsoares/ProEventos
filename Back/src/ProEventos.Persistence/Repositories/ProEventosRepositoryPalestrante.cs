@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace ProEventos.Persistence.Repositories
 {
-    public class ProEventosPersistencePalestrante : ProEventosPersistence, IProEventosPersistencePalestrante
+    public class ProEventosRepositoryPalestrante : ProEventosRepository, IProEventosRepositoryPalestrante
     {
         private readonly ProEventosContext _context;
 
-        public ProEventosPersistencePalestrante(ProEventosContext context) : base(context)
+        public ProEventosRepositoryPalestrante(ProEventosContext context) : base(context)
         {
             _context = context;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProEventos.Persistence.Interfaces
 {
-    public interface IProEventosPersistencePalestrante
+    public interface IProEventosRepositoryPalestrante
     {
         Task<Palestrante[]> GetAllPalestrantesByNomeAsync(string nome, bool includeEventos);
         Task<Palestrante[]> GetAllPalestrantesAsync(bool includeEventos);

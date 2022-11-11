@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProEventos.Persistence
 {
-    public interface IProEventosPersistence
+    public interface IProEventosRepository
     {
         //Geral
         void Add<T>(T entity) where T: class;

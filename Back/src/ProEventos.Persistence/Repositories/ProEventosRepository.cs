@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProEventos.Persistence.Repositories
 {
-    public class ProEventosPersistence : IProEventosPersistence
+    public class ProEventosRepository : IProEventosRepository
     {
         private readonly ProEventosContext _context;
 
-        public ProEventosPersistence(ProEventosContext context)
+        public ProEventosRepository(ProEventosContext context)
         {
             _context = context;
         }
