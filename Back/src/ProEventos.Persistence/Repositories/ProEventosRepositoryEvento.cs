@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ProEventos.Persistence.Repositories
 {
-    public class ProEventosRepositoryEventos : IProEventosRepositoryEvento
+    public class ProEventosRepositoryEvento : IProEventosRepositoryEvento
     {
         private readonly ProEventosContext _context;
 
-        public ProEventosRepositoryEventos(ProEventosContext context) 
+        public ProEventosRepositoryEvento(ProEventosContext context) 
         {
             _context = context;
         }
@@ -30,7 +30,7 @@ namespace ProEventos.Persistence.Repositories
                              .ThenInclude(pe => pe.Palestrante);
             }
 
-            query = query.OrderBy(e => e.Id)
+            query = query.AsNoTracking().OrderBy(e => e.Id)
                          .Where(e => e.Id.Equals(eventoId));
 
             return await query.FirstOrDefaultAsync();
@@ -48,7 +48,7 @@ namespace ProEventos.Persistence.Repositories
                              .ThenInclude(pe => pe.Palestrante);
             }
 
-            return await query.ToArrayAsync();
+            return await query.AsNoTracking().ToArrayAsync();
 
         }
 
@@ -64,7 +64,7 @@ namespace ProEventos.Persistence.Repositories
                              .ThenInclude(pe => pe.Palestrante);
             }
 
-            query = query.OrderBy(e => e.Id)
+            query = query.AsNoTracking().OrderBy(e => e.Id)
                          .Where(e => e.Tema.ToLower().Contains(tema.ToLower()));
 
             return await query.ToArrayAsync();

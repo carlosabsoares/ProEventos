@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProEventos.Persistence.Repositories
 {
@@ -9,6 +10,7 @@ namespace ProEventos.Persistence.Repositories
         public ProEventosRepository(ProEventosContext context)
         {
             _context = context;
+            
         }
 
         public void Add<T>(T entity) where T : class
