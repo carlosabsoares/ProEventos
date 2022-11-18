@@ -10,7 +10,6 @@ namespace ProEventos.Domain
         public DateTime? DataEvento { get; set; }
         public string Tema { get; set; }
         public int QtPessoas { get; set; }
-        public string Lote { get; set; }
         public string ImgEvento { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
