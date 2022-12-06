@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl,FormGroup, Validators } from '@angular/forms';
+import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-evento-detalhe',
@@ -28,11 +28,17 @@ export class EventoDetalheComponent implements OnInit {
       local: ['', Validators.required],
       dataEvento: ['', Validators.required],
       qtPessoas: ['', [Validators.required,
-                                      Validators.max(120000)]],
+                       Validators.min(1),
+                       Validators.max(120000)]],
       telefone: ['', Validators.required],
       email: ['', [Validators.required,
-                                  Validators.email]],
+                   Validators.email]],
       imgEvento: ['', Validators.required],
     });
   }
+
+  public resetForm(): void{
+    this.form.reset();
+  }
+
 }
