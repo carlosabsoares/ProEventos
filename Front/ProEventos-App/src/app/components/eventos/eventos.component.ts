@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-eventos',
@@ -23,15 +23,18 @@ export class EventosComponent implements OnInit {
 
   public validation(): void{
     this.form = this.fb.group({
-      tema: ['', [Validators.required,
-                                 Validators.minLength(4),
-                                 Validators.maxLength(50)]],
-      local: ['', Validators.required],
-      dataEvento: ['', Validators.required],
-      qtPessoas: ['', [Validators.required,
+      primeiroNome: ['', [Validators.required,
+                          Validators.minLength(4),
+                          Validators.maxLength(50)]],
+      ultimoNome: ['', [Validators.required,
+                        Validators.minLength(4),
+                        Validators.maxLength(50)]],
+
+                        confirmeSenha: ['', Validators.required],
+      userName: ['', [Validators.required,
                        Validators.min(1),
                        Validators.max(120000)]],
-      telefone: ['', Validators.required],
+      senha: ['', Validators.required],
       email: ['', [Validators.required,
                    Validators.email]],
       imgEvento: ['', Validators.required],
