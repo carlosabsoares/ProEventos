@@ -23,22 +23,15 @@ export class EventosComponent implements OnInit {
 
   public validation(): void{
     this.form = this.fb.group({
-      primeiroNome: ['', [Validators.required,
-                          Validators.minLength(4),
-                          Validators.maxLength(50)]],
-      ultimoNome: ['', [Validators.required,
-                        Validators.minLength(4),
-                        Validators.maxLength(50)]],
-
-                        confirmeSenha: ['', Validators.required],
-      userName: ['', [Validators.required,
-                       Validators.min(1),
-                       Validators.max(120000)]],
-      senha: ['', Validators.required],
+      tema: ['', [Validators.required]],
+      local: ['', Validators.required],
+      dataEvento: ['', Validators.required],
+      qtPessoas: ['', [Validators.required,
+                       Validators.min(1)]],
+      telefone: ['', Validators.required],
       email: ['', [Validators.required,
                    Validators.email]],
       imgEvento: ['', Validators.required],
     });
   }
-
 }
